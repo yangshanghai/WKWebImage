@@ -10,93 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WKWebImage/WKWebImage/UIImageView+WKWebImage.m"
-            timestampString = "479310411.202382"
+            timestampString = "479471997.243372"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-wk_setImageWithURL:placeholder:completion:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WKWebImage/WKWebImage/UIImageView+WKWebImage.m"
-            timestampString = "479310467.802489"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-wk_setImageWithURL:placeholder:completion:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[UIImageView(WKWebImage) wk_setImageWithURL:placeholder:completion:]"
-                  moduleName = "WKWebImage"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Welkin/Desktop/WKWebImage/WKWebImage/WKWebImage/UIImageView+WKWebImage.m"
-                  timestampString = "479310474.481719"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "412">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__69-[UIImageView(WKWebImage) wk_setImageWithURL:placeholder:completion:]_block_invoke"
-                  moduleName = "WKWebImage"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Welkin/Desktop/WKWebImage/WKWebImage/WKWebImage/UIImageView+WKWebImage.m"
-                  timestampString = "479310474.481872"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WKWebImage/WKWebImage/WKWebImageManager.m"
-            timestampString = "479310494.894861"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "-fetchImageByURL:completion:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WKWebImage/WKWebImage/WKWebImageManager.m"
-            timestampString = "479310512.028503"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "-fetchImageByURL:completion:"
-            landmarkType = "5">
+            startingLineNumber = "64"
+            endingLineNumber = "64">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

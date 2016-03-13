@@ -25,7 +25,7 @@
     
     // 方案二
     // 设置placeholder
-//    [_imageView wk_setImageWithURL:[NSURL URLWithString:@"http://7xneqd.com1.z0.glb.clouddn.com/fiveinarow.png"] placeholder:[UIImage imageNamed:@"Spaceship"]];
+    [_imageView wk_setImageWithURL:[NSURL URLWithString:@"http://7xneqd.com1.z0.glb.clouddn.com/fiveinarow.png"] placeholder:[UIImage imageNamed:@"Spaceship"]];
     
     // 方案三
     // 设置回调
@@ -35,15 +35,15 @@
     
     // 方案四
     // placeholder + 回调
-    [_imageView wk_setImageWithURL:[NSURL URLWithString:@"http://7xneqd.com1.z0.glb.clouddn.com/fiveinarow.png"] placeholder:[UIImage imageNamed:@"Spaceship"] completion:^(UIImage *image) {
-        NSLog(@"%@", image);
-    }];
+//    [_imageView wk_setImageWithURL:[NSURL URLWithString:@"http://7xneqd.com1.z0.glb.clouddn.com/fiveinarow.png"] placeholder:[UIImage imageNamed:@"Spaceship"] completion:^(UIImage *image) {
+//        NSLog(@"%@", image);
+//    }];
     
     // 清除内存中的缓存
-//    [WKWebImage clearMemory];
+//    [[WKWebImageManager sharedManager] clearMemory];
     
-    // 清除本地的缓存
-//    [WKWebImage clearDisk];
+    //清除本地的缓存
+    [[WKWebImageManager sharedManager] clearDisk];
 }
 
 - (void)didReceiveMemoryWarning {

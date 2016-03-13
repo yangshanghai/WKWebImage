@@ -10,12 +10,4 @@
 
 @implementation WKWebImage
 
-+ (void)clearMemory {
-    [[WKWebImageManager sharedManager] clearMemory];
-}
-
-+ (void)clearDisk {
-    [[WKWebImageManager sharedManager] clearDisk];
-}
-
 @end

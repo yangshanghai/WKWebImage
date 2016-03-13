@@ -13,7 +13,7 @@
 
 + (instancetype)sharedManager;
 
-- (void)fetchImageByURL:(NSURL *)url completion:(void (^)(UIImage *image))comletion;
+- (void)fetchImageWithURL:(NSURL *)url completion:(void (^)(UIImage *image))comletion;
 
 - (void)clearMemory;
 

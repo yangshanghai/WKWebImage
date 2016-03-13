@@ -2,7 +2,7 @@
 一行代码实现UIImageView的异步加载、缓存图片。
 
 ##演示
-**pod 'WKWebImage'** 并 **#import "WKWebImage.h"**
+**pod 'WKWebImage'** 并 **#import \<WKWebImage.h>**
 
 ###异步加载图片
 包含以下四种设置方法：
@@ -29,10 +29,10 @@
 **WKWebImage** 会把已加载的图片缓存到本地，如果要清除缓存，可调用以下方法：
 
 	// 清除内存中的缓存
-    [WKWebImage clearMemory];
+    [[WKWebImageManager sharedManager] clearMemory];
     
-    // 清除本地的缓存
-    [WKWebImage clearDisk];
+    //清除本地的缓存
+    [[WKWebImageManager sharedManager] clearDisk];
 
 ##许可
 **WKWebImage** 以 [__MIT License__](https://github.com/WelkinXie/WKWebImage/blob/master/LICENSE) 标准发布.

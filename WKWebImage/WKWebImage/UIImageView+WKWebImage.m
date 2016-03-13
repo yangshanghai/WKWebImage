@@ -21,25 +21,23 @@
 }
 
 - (void)wk_setImageWithURL:(NSURL *)url {
-    [self wk_setImageWithURL:url completion:nil];
+    [self wk_setImageWithURL:url placeholder:nil completion:nil];
 }
 
 - (void)wk_setImageWithURL:(NSURL *)url placeholder:(UIImage *)placeholder {
     [self wk_setImageWithURL:url placeholder:placeholder completion:nil];
 }
 
-- (void)wk_setImageWithURL:(NSURL *)url completion:(void (^)(UIImage *))comletion {
-    [self wk_setImageWithURL:url placeholder:nil completion:nil];
+- (void)wk_setImageWithURL:(NSURL *)url completion:(void (^)(UIImage *))completion {
+    [self wk_setImageWithURL:url placeholder:nil completion:completion];
 }
 
 - (void)wk_setImageWithURL:(NSURL *)url placeholder:(UIImage *)placeholder completion:(void (^)(UIImage *))comletion {
     self.image = placeholder;
+    self.token = url.absoluteString;
     
-    self.token = @([NSDate date].timeIntervalSince1970).stringValue;
-    NSString *oldToken = self.token;
-    
-    [[WKWebImageManager sharedManager] fetchImageByURL:url completion:^(UIImage *image) {
-        if (self.token == oldToken) {
+    [[WKWebImageManager sharedManager] fetchImageWithURL:url completion:^(UIImage *image) {
+        if ([self.token isEqualToString:url.absoluteString]) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.image = image;
                 if (comletion != nil) {

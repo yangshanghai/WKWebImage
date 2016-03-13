@@ -12,8 +12,4 @@
 
 @interface WKWebImage : NSObject
 
-+ (void)clearMemory;
-
-+ (void)clearDisk;
-
 @end

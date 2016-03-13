@@ -25,7 +25,7 @@ static NSUInteger downloading;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         downloader = [[super allocWithZone:NULL] init];
-        downloader.images = [NSMutableDictionary dictionary];
+        downloader.images = [[NSMutableDictionary alloc] initWithCapacity:20];
         
         BOOL isDir;
         NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -44,19 +44,20 @@ static NSUInteger downloading;
     return [self sharedManager];
 }
 
-- (void)fetchImageByURL:(NSURL *)url completion:(void (^)(UIImage *image))comletion {
-    NSString *md5 = [self.class md5Str:url.absoluteString];
+- (void)fetchImageWithURL:(NSURL *)url completion:(void (^)(UIImage *image))comletion {
+    NSString *md5 = [self md5Str:url.absoluteString];
     UIImage *image = _images[md5];
     
     if (!image) {
         BOOL isDir;
-        NSString *imagePath = [HOME_PATH stringByAppendingString:[NSString stringWithFormat:@"%@.png", md5]];
+        
+        NSString *imagePath = [HOME_PATH stringByAppendingString:[NSString stringWithFormat:@"%@.%@", md5, url.absoluteString.pathExtension]];
         NSFileManager *fileManager = [NSFileManager defaultManager];
         if ([fileManager fileExistsAtPath:imagePath isDirectory:&isDir]) {
             NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
             image = [UIImage imageWithData:imageData];
             
-            _images[md5] = image;
+            [self cacheNewImage:image withName:md5];
             
             comletion(image);
         }
@@ -71,9 +72,10 @@ static NSUInteger downloading;
                 NSLog(@"is downloading %lu", (unsigned long)downloading);
                 
                 UIImage *downloadedImage = [UIImage imageWithData:data];
-                _images[md5] = downloadedImage;
                 
-                NSString *imagePath = [HOME_PATH stringByAppendingString:[NSString stringWithFormat:@"%@.png", md5]];
+                [self cacheNewImage:downloadedImage withName:md5];
+                
+                NSString *imagePath = [HOME_PATH stringByAppendingString:[NSString stringWithFormat:@"%@.%@", md5, url.absoluteString.pathExtension]];
                 [data writeToFile:imagePath atomically:YES];
                 
                 comletion(downloadedImage);
@@ -84,6 +86,15 @@ static NSUInteger downloading;
     else {
         comletion(image);
     }
+}
+
+// Wondering
+- (void)cacheNewImage:(UIImage *)image withName:(NSString *)name {
+    if (_images.allKeys.count > 20) {
+        [_images removeAllObjects];
+    }
+    _images[name] = image;
+    NSLog(@"数组大小为：%lu", (unsigned long)_images.allKeys.count);
 }
 
 - (void)clearMemory {
@@ -97,9 +108,10 @@ static NSUInteger downloading;
         
     for (NSString *fileName in fileList) {
         [fileManager removeItemAtPath:[HOME_PATH stringByAppendingPathComponent:fileName] error:&error];
-    }}
+    }
+}
 
-+ (NSString *)md5Str:(NSString *) str {
+- (NSString *)md5Str:(NSString *) str {
     const char *cStr = [str UTF8String];
     unsigned char result[CC_MD5_DIGEST_LENGTH];
     CC_MD5( cStr, strlen(cStr), result );
