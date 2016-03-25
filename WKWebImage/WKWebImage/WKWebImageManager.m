@@ -16,16 +16,18 @@ static NSUInteger downloading;
 
 @interface WKWebImageManager ()
 @property (strong, nonatomic) NSMutableDictionary *images;
+@property (strong, nonatomic) NSMutableArray *keys;
 
 @end
 
-@implementation WKWebImageManager 
+@implementation WKWebImageManager
 
 + (instancetype)sharedManager {
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         downloader = [[super allocWithZone:NULL] init];
         downloader.images = [[NSMutableDictionary alloc] initWithCapacity:20];
+        downloader.keys = [NSMutableArray array];
         
         BOOL isDir;
         NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -63,13 +65,13 @@ static NSUInteger downloading;
         }
         else {
             downloading ++;
-            NSLog(@"is downloading %lu", (unsigned long)downloading);
+            //            NSLog(@"is downloading %lu", (unsigned long)downloading);
             
             NSURLSession *session = [NSURLSession sharedSession];
             NSURLSessionDataTask *task = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                 
                 downloading --;
-                NSLog(@"is downloading %lu", (unsigned long)downloading);
+                //                NSLog(@"is downloading %lu", (unsigned long)downloading);
                 
                 UIImage *downloadedImage = [UIImage imageWithData:data];
                 
@@ -88,13 +90,16 @@ static NSUInteger downloading;
     }
 }
 
-// Wondering
+// 不用严格遵守小于20张图，只是为了避免内存消耗过多而已。
+// 因而不加锁以及不采用LRU等算法实现。
 - (void)cacheNewImage:(UIImage *)image withName:(NSString *)name {
-    if (_images.allKeys.count > 20) {
-        [_images removeAllObjects];
+    if (_images.allKeys.count > 19) {
+        [_images removeObjectForKey:_keys[0]];
+        [_keys removeObjectAtIndex:0];
     }
+    [_keys addObject:name];
     _images[name] = image;
-    NSLog(@"数组大小为：%lu", (unsigned long)_images.allKeys.count);
+//    NSLog(@"数组大小为：%lu", (unsigned long)_images.allKeys.count);
 }
 
 - (void)clearMemory {
@@ -105,7 +110,7 @@ static NSUInteger downloading;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error = nil;
     NSArray *fileList = [fileManager contentsOfDirectoryAtPath:HOME_PATH error:&error];
-        
+    
     for (NSString *fileName in fileList) {
         [fileManager removeItemAtPath:[HOME_PATH stringByAppendingPathComponent:fileName] error:&error];
     }
@@ -114,7 +119,7 @@ static NSUInteger downloading;
 - (NSString *)md5Str:(NSString *) str {
     const char *cStr = [str UTF8String];
     unsigned char result[CC_MD5_DIGEST_LENGTH];
-    CC_MD5( cStr, strlen(cStr), result );
+    CC_MD5(cStr, (int)strlen(cStr), result );
     
     return [NSString stringWithFormat:
             @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
