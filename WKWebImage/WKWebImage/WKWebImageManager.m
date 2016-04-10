@@ -12,7 +12,7 @@
 #define HOME_PATH [NSString stringWithFormat:@"%@/Documents/WKWebImageCache/", NSHomeDirectory()]
 
 static WKWebImageManager *downloader;
-static NSUInteger downloading;
+//static NSUInteger downloading;
 
 @interface WKWebImageManager ()
 @property (strong, nonatomic) NSCache *images;
@@ -47,19 +47,19 @@ static NSUInteger downloading;
 
 - (void)fetchImageWithURL:(NSURL *)url completion:(void (^)(UIImage *image))comletion {
 //    NSLog(@"count: %ld", _images.countLimit);
-    NSString *md5 = [self keyForUrl:url.absoluteString];
-    UIImage *image = [_images objectForKey:md5];
+    NSString *key = [self keyForUrl:url.absoluteString];
+    UIImage *image = [_images objectForKey:key];
     
     if (!image) {
         BOOL isDir;
         
-        NSString *imagePath = [HOME_PATH stringByAppendingString:[NSString stringWithFormat:@"%@.%@", md5, url.absoluteString.pathExtension]];
+        NSString *imagePath = [HOME_PATH stringByAppendingString:[NSString stringWithFormat:@"%@.%@", key, url.absoluteString.pathExtension]];
         NSFileManager *fileManager = [NSFileManager defaultManager];
         if ([fileManager fileExistsAtPath:imagePath isDirectory:&isDir]) {
             NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
             image = [UIImage imageWithData:imageData];
             
-            [_images setObject:image forKey:md5];
+            [_images setObject:image forKey:key];
             
             comletion(image);
         }
@@ -75,9 +75,9 @@ static NSUInteger downloading;
                 
                 UIImage *downloadedImage = [UIImage imageWithData:data];
                 
-                [_images setObject:downloadedImage forKey:md5];
+                [_images setObject:downloadedImage forKey:key];
                 
-                NSString *imagePath = [HOME_PATH stringByAppendingString:[NSString stringWithFormat:@"%@.%@", md5, url.absoluteString.pathExtension]];
+                NSString *imagePath = [HOME_PATH stringByAppendingString:[NSString stringWithFormat:@"%@.%@", key, url.absoluteString.pathExtension]];
                 [data writeToFile:imagePath atomically:YES];
                 
                 comletion(downloadedImage);
