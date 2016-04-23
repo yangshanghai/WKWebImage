@@ -5,6 +5,8 @@
 //  Created by Welkin Xie on 3/9/16.
 //  Copyright © 2016 WelkinXie. All rights reserved.
 //
+//  Github: https://github.com/WelkinXie/WKWebImage
+//
 
 #import "UIImageView+WKWebImage.h"
 #import <objc/runtime.h>
