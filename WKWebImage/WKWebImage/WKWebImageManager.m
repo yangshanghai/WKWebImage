@@ -75,14 +75,18 @@ static WKWebImageManager *downloader;
 //                downloading --;
 //                NSLog(@"is downloading %lu", (unsigned long)downloading);
                 
-                UIImage *downloadedImage = [UIImage imageWithData:data];
-                
-                [_images setObject:downloadedImage forKey:key];
-                
-                NSString *imagePath = [HOME_PATH stringByAppendingString:[NSString stringWithFormat:@"%@.%@", key, url.absoluteString.pathExtension]];
-                [data writeToFile:imagePath atomically:YES];
-                
-                comletion(downloadedImage);
+                if (error) {
+                    comletion(nil);
+                } else {
+                    UIImage *downloadedImage = [UIImage imageWithData:data];
+                    
+                    [_images setObject:downloadedImage forKey:key];
+                    
+                    NSString *imagePath = [HOME_PATH stringByAppendingString:[NSString stringWithFormat:@"%@.%@", key, url.absoluteString.pathExtension]];
+                    [data writeToFile:imagePath atomically:YES];
+                    
+                    comletion(downloadedImage);
+                }
             }];
             [task resume];
         }
