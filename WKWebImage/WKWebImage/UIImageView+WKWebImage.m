@@ -37,7 +37,9 @@
 - (void)wk_setImageWithURL:(NSURL *)url placeholder:(UIImage *)placeholder completion:(void (^)(UIImage *))comletion {
     self.image = placeholder;
     self.token = url.absoluteString;
-    
+    if (self.token.length == 0) {
+        return;
+    }
     [[WKWebImageManager sharedManager] fetchImageWithURL:url completion:^(UIImage *image) {
         if ([self.token isEqualToString:url.absoluteString]) {
             dispatch_async(dispatch_get_main_queue(), ^{

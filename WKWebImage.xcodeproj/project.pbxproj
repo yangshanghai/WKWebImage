@@ -16,7 +16,6 @@
 		259DE95D1C91AB050095736D /* UIImageView+WKWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 259DE9581C91AB050095736D /* UIImageView+WKWebImage.m */; };
 		259DE95E1C91AB050095736D /* WKWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 259DE95A1C91AB050095736D /* WKWebImage.m */; };
 		259DE95F1C91AB050095736D /* WKWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 259DE95C1C91AB050095736D /* WKWebImageManager.m */; };
-		259DE9611C91B2200095736D /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 259DE9601C91B2200095736D /* Spaceship.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +35,6 @@
 		259DE95A1C91AB050095736D /* WKWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebImage.m; sourceTree = "<group>"; };
 		259DE95B1C91AB050095736D /* WKWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebImageManager.h; sourceTree = "<group>"; };
 		259DE95C1C91AB050095736D /* WKWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebImageManager.m; sourceTree = "<group>"; };
-		259DE9601C91B2200095736D /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +67,6 @@
 		259DE93E1C91AAF90095736D /* WKWebImage */ = {
 			isa = PBXGroup;
 			children = (
-				259DE9601C91B2200095736D /* Spaceship.png */,
 				259DE9561C91AB050095736D /* WKWebImage */,
 				259DE9421C91AAF90095736D /* AppDelegate.h */,
 				259DE9431C91AAF90095736D /* AppDelegate.m */,
@@ -162,7 +159,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				259DE9611C91B2200095736D /* Spaceship.png in Resources */,
 				259DE94F1C91AAF90095736D /* LaunchScreen.storyboard in Resources */,
 				259DE94C1C91AAF90095736D /* Assets.xcassets in Resources */,
 				259DE94A1C91AAF90095736D /* Main.storyboard in Resources */,

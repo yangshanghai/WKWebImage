@@ -23,26 +23,26 @@
     
     // 方案一
     //
-//    [_imageView wk_setImageWithURL:[NSURL URLWithString:@"http://7xneqd.com1.z0.glb.clouddn.com/fiveinarow.png"]];
+//    [_imageView wk_setImageWithURL:[NSURL URLWithString:@""]];
     
     // 方案二
     // 设置placeholder
-    [_imageView wk_setImageWithURL:[NSURL URLWithString:@"http://7xneqd.com1.z0.glb.clouddn.com/fiveinarow.png"] placeholder:[UIImage imageNamed:@"Spaceship"]];
+    [_imageView wk_setImageWithURL:[NSURL URLWithString:@""] placeholder:[UIImage imageNamed:@""]];
     
     // 方案三
     // 设置回调
-//    [_imageView wk_setImageWithURL:[NSURL URLWithString:@"http://7xneqd.com1.z0.glb.clouddn.com/fiveinarow.png"] completion:^(UIImage *image) {
+//    [_imageView wk_setImageWithURL:[NSURL URLWithString:@""] completion:^(UIImage *image) {
 //        NSLog(@"%@", image);
 //    }];
     
     // 方案四
     // placeholder + 回调
-//    [_imageView wk_setImageWithURL:[NSURL URLWithString:@"http://7xneqd.com1.z0.glb.clouddn.com/fiveinarow.png"] placeholder:[UIImage imageNamed:@"Spaceship"] completion:^(UIImage *image) {
+//    [_imageView wk_setImageWithURL:[NSURL URLWithString:@""] placeholder:[UIImage imageNamed:@""] completion:^(UIImage *image) {
 //        NSLog(@"%@", image);
 //    }];
     
     // 清除内存中的缓存
-//    [[WKWebImageManager sharedManager] clearMemory];
+    [[WKWebImageManager sharedManager] clearMemory];
     
     //清除本地的缓存
     [[WKWebImageManager sharedManager] clearDisk];
