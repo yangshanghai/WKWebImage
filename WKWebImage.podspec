@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author       = { "Welkin Xie" => "welkin995@126.com" }
   s.platform     = :ios, "7.0"
   s.ios.deployment_target = "7.0"
-  s.source       = { :git => "https://github.com/WelkinXie/WKWebImage.git", :tag => s.version, :commit => "d98835afb6fa8e865eba22239beedd11483e5d19"}
-  s.source_files  = 'WKWebImage/WKWebImage/*.{h,m}'
+  s.source       = { :git => "https://github.com/WelkinXie/WKWebImage.git", :tag => s.version}
+  s.source_files  = 'WKWebImage/WKWebImage/*.{h,m,md}'
   s.requires_arc = true
 end
